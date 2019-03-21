@@ -30,7 +30,7 @@ services:
              - ./sql/:/docker-entrypoint-initdb.d
 
     bucardo:
-        image: inayellearts/bucardo
+        image: plgr/bucardo
         environment:
                BUCARDO_DB1: s1
                BUCARDO_DB2: s2
