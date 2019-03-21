@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+
+    office1:
+        image: postgres:10
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: secret1
+        networks:
+            uni_network:
+                  ipv4_address: 172.20.20.2
+        ports:
+             - 6666:5432
+        volumes:
+             - ./sql/:/docker-entrypoint-initdb.d
+            
+
+    office2:
+        image: postgres:10
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: secret2
+        networks:
+            uni_network:
+                  ipv4_address: 172.20.20.3
+        ports:
+             - 7777:5432
+        volumes:
+             - ./sql/:/docker-entrypoint-initdb.d
+
+    bucardo:
+        image: inayellearts/bucardo
+        environment:
+               BUCARDO_DB1: s1
+               BUCARDO_DB2: s2
+        volumes:
+               - ./config/:/media/bucardo
+        depends_on:
+               - office2
+               - office1
+        networks:
+            uni_network:
+                  ipv4_address: 172.20.20.4
+
+
+networks:
+  uni_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.20.20.0/24

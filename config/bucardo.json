@@ -1,0 +1,36 @@
+{
+   "databases":[
+      {
+         "id": 1,
+         "dbname": "postgres",
+         "host": "172.20.20.2",
+         "port": 5432,
+         "user": "postgres",
+         "pass": "secret1"
+      },
+      {
+         "id": 2,
+         "dbname": "postgres",
+         "host": "172.20.20.3",
+         "port": 5432,
+         "user": "postgres",
+         "pass": "secret2"
+      }
+   ],
+   "syncs": [
+      {
+         "sources": [1],
+         "targets": [2],
+         "tables": "departments,groups,marks,passport_info,rooms,schedule,session_results,specialities,students,study_plans,subjects,tutors",
+         "sequences": "all",
+         "onetimecopy": 2
+      },
+      {
+         "sources": [2],
+         "targets": [1],
+         "tables": "departments,groups,marks,passport_info,rooms,schedule,session_results,specialities,students,study_plans,subjects,tutors",
+         "sequences": "all",
+         "onetimecopy": 2
+      }
+   ]
+}
