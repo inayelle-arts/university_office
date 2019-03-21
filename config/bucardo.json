@@ -6,7 +6,7 @@
          "host": "172.20.20.2",
          "port": 5432,
          "user": "postgres",
-         "pass": "secret1"
+         "pass": "s1"
       },
       {
          "id": 2,
@@ -14,7 +14,7 @@
          "host": "172.20.20.3",
          "port": 5432,
          "user": "postgres",
-         "pass": "secret2"
+         "pass": "s2"
       }
    ],
    "syncs": [

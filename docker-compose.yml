@@ -6,7 +6,7 @@ services:
         image: postgres:10
         restart: always
         environment:
-            POSTGRES_PASSWORD: secret1
+            POSTGRES_PASSWORD: s1
         networks:
             uni_network:
                   ipv4_address: 172.20.20.2
@@ -20,7 +20,7 @@ services:
         image: postgres:10
         restart: always
         environment:
-            POSTGRES_PASSWORD: secret2
+            POSTGRES_PASSWORD: s2
         networks:
             uni_network:
                   ipv4_address: 172.20.20.3
@@ -31,9 +31,9 @@ services:
 
     bucardo:
         image: plgr/bucardo
-        environment:
-               BUCARDO_DB1: s1
-               BUCARDO_DB2: s2
+#        environment:
+#               BUCARDO_DB1: s1
+#               BUCARDO_DB2: s2
         volumes:
                - ./config/:/media/bucardo
         depends_on:
