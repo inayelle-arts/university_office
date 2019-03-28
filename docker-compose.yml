@@ -31,17 +31,14 @@ services:
 
     bucardo:
         image: plgr/bucardo
-#        environment:
-#               BUCARDO_DB1: s1
-#               BUCARDO_DB2: s2
         volumes:
                - ./config/:/media/bucardo
         depends_on:
-               - office2
                - office1
+               - office2
         networks:
             uni_network:
-                  ipv4_address: 172.20.20.4
+                  ipv4_address: 172.20.20.5
 
 
 networks:
